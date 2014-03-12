@@ -1,5 +1,4 @@
 # Requirements
----
 
 - User info (possibly multiple users, but I’m not sure if this is an individual’s blog site or a blog site for multiple people to sign up), which will have:
   - Username
@@ -18,9 +17,10 @@
   - Commenter name
   - Comment post date
   - Comment content
-  
-# Plan
+
 ---
+
+# Plan
 
 - Create a database with tables for all that stuff in the requirements
 - Write tests, I guess ):
