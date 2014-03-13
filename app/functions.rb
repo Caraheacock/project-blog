@@ -23,7 +23,7 @@ ActiveRecord::Schema.define do
     create_table :posts do |table|
       table.column :user_id, :integer
       table.column :title, :string
-      table.column :date_posted # look up what type a date needs to be
+      table.column :created_at, :datetime
       table.column :content, :text
     end
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define do
   unless ActiveRecord::Base.connection.tables.include? 'comments'
     create_table :comments do |table|
       table.column :post_id, :integer
-      table.column :date_posted # look up what type a date needs to be
+      table.column :created_at, :datetime
       table.column :content, :text
       table.column :email, :string
     end

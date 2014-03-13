@@ -6,4 +6,6 @@ require 'sinatra/reloader'
 require_relative './functions'
 
 class Blog < Sinatra::Base
+  get "/" do
+  end
 end
