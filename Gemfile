@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 
 gem 'sinatra'
-gem ‘activerecord’
+gem 'activerecord'
 
 group :test do
   gem 'rspec'
