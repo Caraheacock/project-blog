@@ -31,9 +31,10 @@ ActiveRecord::Schema.define do
   unless ActiveRecord::Base.connection.tables.include? 'comments'
     create_table :comments do |table|
       table.column :post_id, :integer
-      table.column :created_at, :datetime
-      table.column :content, :text
+      table.column :commenter, :string
       table.column :email, :string
+      table.column :content, :text
+      table.column :created_at, :datetime
     end
   end
 end
