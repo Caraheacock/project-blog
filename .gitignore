@@ -1,2 +1,2 @@
-./app/databases/blog
-./app/databases/blog_test
+app/databases/blog
+app/databases/blog_test
