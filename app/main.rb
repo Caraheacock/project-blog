@@ -36,9 +36,6 @@ class Blog < Sinatra::Base
   end
   
   get "/blog/:id" do
-    @user = User.find(params[:id])
-    
-    binding.pry
     
     erb :blog
   end
@@ -46,6 +43,18 @@ class Blog < Sinatra::Base
   get "/blog/new_post/:id" do
     @user = User.find(params[:id])
     
-    "New post form goes here for #{@user.first_name}."
+    erb :post
+  end
+  
+  post "/blog/publish_post/:id" do
+    @user = User.find(params[:id])
+    
+    new_post = Post.create({
+      :user_id => @user.id,
+      :title => params[:title],
+      :content => params[:content]
+    })
+    
+    erb :blog
   end
 end
