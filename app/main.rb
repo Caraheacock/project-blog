@@ -22,17 +22,26 @@ class Blog < Sinatra::Base
   end
   
   post "/sign_up" do
-    user = User.create({
-      :username => params[:username],
-      :password => params[:password],
-      :first_name => params[:first_name],
-      :last_name => params[:last_name],
-      :email => params[:email]
-    })
+    # Checks to see if that username is already taken
+    user = User.find_by_username(params[:username])
     
-    params[:id] = user.id
+    # Redirects the user back to the homepage if the username is taken.
+    # Creates the new user if username is not taken and redirects to blog page.
+    if user
+      redirect to("/")
+    else
+      user = User.create({
+        :username => params[:username],
+        :password => params[:password],
+        :first_name => params[:first_name],
+        :last_name => params[:last_name],
+        :email => params[:email]
+      })
     
-    redirect to("/blog/#{params[:id]}")
+      params[:id] = user.id
+    
+      redirect to("/blog/#{params[:id]}")
+    end
   end
   
   get "/blog/:id" do
@@ -56,6 +65,6 @@ class Blog < Sinatra::Base
       :content => params[:content]
     })
     
-    erb :blog
+    redirect to ("/blog/#{params[:id]}")
   end
 end

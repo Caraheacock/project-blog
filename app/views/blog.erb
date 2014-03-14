@@ -6,8 +6,9 @@
 	<p>You have no posts yet! ):</p>
 <% else %>
 	<% @user.posts.reverse.each do |post| %>
+		<hr />
 		<h2><%= post.title %></h2>
-		<a href="#">Edit this post</a>
+		<p><a href="#">Edit this post</a> <a href="#">Delete this post</a></p>
 		<p><%= post.created_at %></p>
 		<% paragraphs = post.make_paragraphs(post.content) %>
 		<% paragraphs.each do |p| %>
