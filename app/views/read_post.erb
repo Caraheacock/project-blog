@@ -8,18 +8,20 @@
 
 <hr />
 
-<% if @post.comments == [] %>
-	<p>No comments yet</p>
-<% else %>
-	<% @post.comments.each do |comment| %>
-		<p><strong><%= comment.commenter %></strong></p>
-		<p><%= comment.created_at %></p>
-		<p><%= comment.content %></p>
-	<% end %>
-<% end %>
-
 <div id="comments">
-	<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment">Leave a comment</a></p>
+	<% if @post.comments == [] %>
+		<p>No comments yet</p>
+	<% else %>
+		<% @post.comments.each do |comment| %>
+			<div class="single_comment">
+				<p><strong><%= comment.commenter %></strong></p>
+				<p><%= comment.created_at %></p>
+				<p><%= comment.content %></p>
+			</div>
+		<% end %>
+	<% end %>
 </div>
+
+<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment">Leave a comment</a></p>
 
 <p><a href="/blog/<%= @user.username %>">Back to <%= @user.username %> Blog</a></p>
