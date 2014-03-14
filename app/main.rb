@@ -36,6 +36,7 @@ class Blog < Sinatra::Base
   end
   
   get "/blog/:id" do
+    @user = User.find(params[:id])
     
     erb :blog
   end

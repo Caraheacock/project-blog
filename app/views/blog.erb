@@ -5,7 +5,7 @@
 <% if @user.posts == [] %>
 	<p>You have no posts yet! ):</p>
 <% else %>
-	<% @user.posts.each do |post| %>
+	<% @user.posts.reverse.each do |post| %>
 		<h2><%= post.title %></h2>
 		<a href="#">Edit this post</a>
 		<p><%= post.created_at %></p>
