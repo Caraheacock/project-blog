@@ -15,7 +15,7 @@ class Blog < Sinatra::Base
     
     if user && user.password == params[:password]
       params[:id] = user.id
-      redirect to("/blog/#{params[:id]}")
+      redirect to("/blog/#{params[:username]}")
     else
       redirect to("/")
     end
@@ -40,24 +40,24 @@ class Blog < Sinatra::Base
     
       params[:id] = user.id
     
-      redirect to("/blog/#{params[:id]}")
+      redirect to("/blog/#{params[:username]}")
     end
   end
   
-  get "/blog/:id" do
-    @user = User.find(params[:id])
+  get "/blog/:username" do
+    @user = User.find_by_username(params[:username])
     
     erb :blog
   end
   
-  get "/blog/new_post/:id" do
-    @user = User.find(params[:id])
+  get "/blog/:username/new_post" do
+    @user = User.find_by_username(params[:username])
     
     erb :post
   end
   
-  post "/blog/publish_post/:id" do
-    @user = User.find(params[:id])
+  post "/blog/:username/publish_post" do
+    @user = User.find_by_username(params[:username])
     
     new_post = Post.create({
       :user_id => @user.id,
@@ -65,6 +65,9 @@ class Blog < Sinatra::Base
       :content => params[:content]
     })
     
-    redirect to ("/blog/#{params[:id]}")
+    redirect to("/blog/#{params[:username]}")
+  end
+  
+  get "/blog/:username/edit_post" do
   end
 end

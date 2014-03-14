@@ -1,6 +1,6 @@
 <h2><%= @user.username %> Blog</h2>
 
-<p><a href="/blog/new_post/<%= params[:id] = @user.id %>">Create new post</a></p>
+<p><a href="/blog/<%= params[:username] = @user.username %>/new_post">Create new post</a></p>
 
 <% if @user.posts == [] %>
 	<p>You have no posts yet! ):</p>
