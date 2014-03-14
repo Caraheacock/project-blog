@@ -11,6 +11,14 @@ class Blog < Sinatra::Base
   end
   
   post "/log_in" do
+    user = User.find_by_username(params[:username])
+    
+    if user && user.password == params[:password]
+      params[:id] = user.id
+      redirect to("/blog/#{params[:id]}")
+    else
+      redirect to("/")
+    end
   end
   
   post "/sign_up" do
@@ -29,8 +37,15 @@ class Blog < Sinatra::Base
   
   get "/blog/:id" do
     @user = User.find(params[:id])
+    
     binding.pry
     
-    "Hi, #{@user.first_name}!"
+    erb :blog
+  end
+  
+  get "/blog/new_post/:id" do
+    @user = User.find(params[:id])
+    
+    "New post form goes here for #{@user.first_name}."
   end
 end
