@@ -86,4 +86,20 @@ class Blog < Sinatra::Base
     
     redirect to("/blog/#{params[:username]}")
   end
+  
+  get "/blog/:username/delete_confirm/:post_id" do
+    @user = User.find_by_username(params[:username])
+    @old_post = Post.find(params[:post_id])
+    
+    erb :delete
+  end
+  
+  post "/blog/:username/delete_post/:post_id" do
+    @user = User.find_by_username(params[:username])
+    old_post = Post.find(params[:post_id])
+    
+    Post.delete(old_post.id)
+    
+    redirect to("/blog/#{params[:username]}")
+  end
 end

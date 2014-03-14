@@ -1,0 +1,18 @@
+<h2>Are you sure you want to delete this post?</h2>
+
+<p>You can never get it back because it is for real getting deleted out of the database.</p>
+
+<h3><%= @old_post.title %></h3>
+
+<p><%= @old_post.created_at %></p>
+<% paragraphs = @old_post.make_paragraphs(@old_post.content) %>
+<% paragraphs.each do |p| %>
+	<p><%= p %></p>
+<% end %>
+
+<form method="post" action="/blog/<%= @user.username %>/delete_post/<%= @old_post.id %>">
+	<button type="submit">Yes, delete forever</button>
+</form>
+<form method="get" action="/blog/<%= @user.username %>">
+	<button type="submit">Nooo, I've made a horrible mistake, I'm sorry ):</button>
+</form>
