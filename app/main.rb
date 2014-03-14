@@ -57,17 +57,6 @@ class Blog < Sinatra::Base
     erb :blog
   end
   
-  get "/blog/:username/:post_id" do
-    @user = User.find_by_username(params[:username])
-    @post = Post.find(params[:post_id])
-    
-    erb :read_post
-  end
-  
-  ###################
-  # New post routes #
-  ###################
-  
   get "/blog/:username/new_post" do
     @user = User.find_by_username(params[:username])
     
@@ -84,6 +73,13 @@ class Blog < Sinatra::Base
     })
     
     redirect to("/blog/#{params[:username]}")
+  end
+  
+  get "/blog/:username/:post_id" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    
+    erb :read_post
   end
   
   ####################

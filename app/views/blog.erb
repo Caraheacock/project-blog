@@ -1,6 +1,6 @@
 <h2><%= @user.username %> Blog</h2>
 
-<p><a href="/blog/<%= @user.username %>/new_post">Create new post</a></p>
+<p><a href="/blog/<%= @user.username %>/new_post" class="big_button">Create new post</a></p>
 
 <% if @user.posts == [] %>
 	<p>You have no posts yet! ):</p>
@@ -8,7 +8,7 @@
 	<% @user.posts.reverse.each do |post| %>
 		<hr />
 		<h3><a href="/blog/<%= @user.username %>/<%= post.id %>"><%= post.title %></h3>
-		<p><a href="/blog/<%= @user.username %>/edit_post/<%= post.id %>">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= post.id %>">Delete this post</a></p>
+		<p><a href="/blog/<%= @user.username %>/edit_post/<%= post.id %>" class="little_button">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= post.id %>" class="little_button">Delete this post</a></p>
 		<p><%= post.created_at %></p>
 		<% paragraphs = post.make_paragraphs(post.content) %>
 		<% paragraphs.each do |p| %>

@@ -1,8 +1,136 @@
 <head>
 	<style type="text/css">
-	/* Form Stuff */
+	/* Body */
+	body {
+		margin: 0;
+		background-color: #CACCE3;
+	}
+	
+	/* General font stuff */
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Courier New", Courier, monospace;
+	}
+	
+	h1 {
+		text-align: center;
+		font-size: 3em;
+		font-weight: normal;
+		font-variant: small-caps;
+		letter-spacing: 5px;
+		margin-top: 0;
+	}
+	
+	h2 {
+		font-size: 2em;
+	}
+	
+	h3 {
+		font-size: 1.6em;
+	}
+	
+	p, td, li {
+		font-family: Verdana, sans-serif;
+		line-height: 1.5em;
+	}
+	
+	/* General link and button stuff */
+	
+	a {
+		text-decoration: none;
+		color: #1B226E;
+	}
+	
+	a:hover, a:active, a:focus {
+		color: #DB9E1A;
+	}
+	
+	.big_button, .little_button {
+		font-family: "Courier New", Courier, monospace;
+		padding: 10px;
+		color: white;
+		border-radius: 10px;
+		background-color: #1B226E;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	
+	.big_button {
+		font-size: 1.5em;
+		border: dashed 3px #fff;
+		letter-spacing: 3px;
+	}
+	
+	.big_button:active, .big_button:hover, .big_button:focus, .little_button:active, .little_button:hover, .little_button:focus {
+		background-color: #DB9E1A;
+		color: #fff;
+	}
+	
+	.little_button {
+		font-size: 1em;
+		margin-right: 10px;
+	}
+	
+	/* Big sections */
+	#header, #container, #footer {
+		width: 800px;
+		margin: 25px auto;
+		padding: 25px 50px;
+		border-radius: 25px;
+		clear: both;
+	}
+	
+	#header, #footer {
+		background-color: rgba(27,34,110,0.7);
+		height: 50px;
+		text-align: center;
+	}
+	
+	#header h1 a {
+		color: #fff;
+	}
+	
+	#container {
+		background-color: rgba(255,255,255,0.5);
+	}
+	
+	/* Forms */
 	#log_in_form, #sign_up_form {
-		width: 300px;
+		width: 35%;
+		padding: 25px;
+		background-color: rgba(27,34,110,0.7);
+		border-radius: 25px;
+		color: #fff;
+	}
+	
+	#log_in_form h2, #sign_up_form h2 {
+		display: block;
+		padding: 10px;
+		background-color: rgba(255,255,255,0.5);
+		margin-top: 0;
+		color: #1B226E;
+		border-radius: 25px;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+	}
+	
+	#log_in_form input, #sign_up_form input {
+		width: 100%;
+		margin-top: 5px;
+	}
+	
+	#log_in_form {
+		float: left;
+	}
+	
+	#sign_up_form {
+		float: right;
+	}
+	
+	input, textarea {
+		font-size: 1em;
+		line-height: 1.5em;
+		padding: 5px;
 	}
 	
 	/* Post Stuff */
@@ -24,13 +152,24 @@
 	.single_comment {
 		
 	}
+	
+	/* Miscellaneous */
+	
+	hr {
+		border: dashed 5px #CACCE3;
+	}
 	</style>
 </head>
 
 <body>
-
-<h1><a href="/">Cara's Amazing Blog Site</a></h1>
-
-<%= yield %>
+	<div id="header">
+		<h1><a href="/">Cara's Amazing Blog Site</a></h1>
+	</div>
 	
+	<div id="container">
+		<%= yield %>
+		<div style="clear: both;"></div>
+	</div>
+	
+	<div id="footer"></div>
 </body>
