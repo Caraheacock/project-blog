@@ -6,6 +6,9 @@ require 'sinatra/reloader'
 require_relative './functions'
 
 class Blog < Sinatra::Base
+  ####################
+  # Main page routes #
+  ####################
   get "/" do
     erb :home
   end
@@ -44,11 +47,26 @@ class Blog < Sinatra::Base
     end
   end
   
+  ####################
+  # Blog page routes #
+  ####################
+  
   get "/blog/:username" do
     @user = User.find_by_username(params[:username])
     
     erb :blog
   end
+  
+  get "/blog/:username/:post_id" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    
+    erb :read_post
+  end
+  
+  ###################
+  # New post routes #
+  ###################
   
   get "/blog/:username/new_post" do
     @user = User.find_by_username(params[:username])
@@ -68,6 +86,10 @@ class Blog < Sinatra::Base
     redirect to("/blog/#{params[:username]}")
   end
   
+  ####################
+  # Edit post routes #
+  ####################
+  
   get "/blog/:username/edit_post/:post_id" do
     @user = User.find_by_username(params[:username])
     @old_post = Post.find(params[:post_id])
@@ -86,6 +108,10 @@ class Blog < Sinatra::Base
     
     redirect to("/blog/#{params[:username]}")
   end
+  
+  ######################
+  # Delete post routes #
+  ######################
   
   get "/blog/:username/delete_confirm/:post_id" do
     @user = User.find_by_username(params[:username])
