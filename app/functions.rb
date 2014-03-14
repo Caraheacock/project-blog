@@ -46,6 +46,13 @@ end
 class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
+  
+  # Takes the post content and creates an array of paragraphs.
+  #
+  # Returns an array where each paragraph is an item in the array.
+  # def make_paragraphs(text)
+  #   paragraphs = text.split(/n/n)
+  # end
 end
 
 class Comment < ActiveRecord::Base
