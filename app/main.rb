@@ -141,5 +141,16 @@ class Blog < Sinatra::Base
   end
   
   post "/blog/:username/:post_id/publish_comment" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    
+    Comment.create({
+      :post_id => @post.id,
+      :commenter => params[:commenter],
+      :email => params[:email],
+      :content => params[:content]
+    })
+    
+    redirect to("/blog/#{params[:username]}/#{params[:post_id]}#comments")
   end
 end
