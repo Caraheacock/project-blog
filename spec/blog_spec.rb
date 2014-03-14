@@ -26,6 +26,7 @@ describe "Blog" do
     })
   end
   
+  # User class tests
   it "creates a user" do
     expect(@caraisakitty.username).to eq("CaraisaKitty")
   end
@@ -35,6 +36,7 @@ describe "Blog" do
     expect(@caraisakitty.password).to eq("meow")
   end
   
+  # Post class tests
   it "creates a post" do
     expect(@post1.title).to eq("Tra la la la la")
   end
@@ -59,6 +61,7 @@ describe "Blog" do
     expect(post2).to eq(nil)
   end
   
+  # Comment class tests
   it "creates a comment" do
     expect(@comment1.commenter).to eq("Bob")
   end

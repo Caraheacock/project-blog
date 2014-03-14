@@ -39,22 +39,26 @@ ActiveRecord::Schema.define do
   end
 end
 
+module TextFormat
+  # Takes the post content and creates an array of paragraphs.
+  #
+  # Returns an array where each paragraph is an item in the array.
+  def make_paragraphs(text)
+    paragraphs = text.split(/\r\n/)
+  end
+end
+
 class User < ActiveRecord::Base
   has_many :posts
 end
 
 class Post < ActiveRecord::Base
+  include TextFormat
   belongs_to :user
   has_many :comments
-  
-  # Takes the post content and creates an array of paragraphs.
-  #
-  # Returns an array where each paragraph is an item in the array.
-  # def make_paragraphs(text)
-  #   paragraphs = text.split(/n/n)
-  # end
 end
 
 class Comment < ActiveRecord::Base
+  include TextFormat
   belongs_to :post
 end
