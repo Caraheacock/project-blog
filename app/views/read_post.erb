@@ -6,4 +6,17 @@
 	<p><%= p %></p>
 <% end %>
 
+<% if @post.comments == [] %>
+	<p>No comments yet</p>
+<% else %>
+	<% @post.comments.each do |comment| %>
+		<p><strong><%= comment.commenter %></strong></p>
+		<p><%= comment.content %></p>
+	<% end %>
+<% end %>
+
+<div id="comments">
+	<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment">Leave a comment</a></p>
+</div>
+
 <p><a href="/blog/<%= @user.username %>">Back to <%= @user.username %> Blog</a></p>

@@ -1,0 +1,18 @@
+<h2>Leave a comment</h2>
+<h3>for <%= @user.username %> post: "<%= @post.title %>"</h3>
+
+<form method="post" action="/blog/<%= @user.username %>/<%= @post.id %>/publish_comment">
+	<p>
+		Name:<br />
+		<input type="text" name="commenter" value="<%= @old_comment.commenter if @old_comment %>" />
+	</p>
+	<p>
+		Email (only for my records; will not be published or spammed):<br />
+		<input type="text" name="email" value="<%= @old_comment.email if @old_comment %>" />
+	</p>
+	<p>
+		Leave a comment:<br />
+		<textarea name="content" class="post_content" /><%= @old_comment.content if @old_comment %></textarea>
+	</p>
+	<button type="submit">Post</button>
+</form>

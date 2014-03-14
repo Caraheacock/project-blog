@@ -128,4 +128,18 @@ class Blog < Sinatra::Base
     
     redirect to("/blog/#{params[:username]}")
   end
+  
+  ##################
+  # Comment routes #
+  ##################
+  
+  get "/blog/:username/:post_id/comment" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    
+    erb :comment
+  end
+  
+  post "/blog/:username/:post_id/publish_comment" do
+  end
 end
