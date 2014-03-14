@@ -1,7 +1,14 @@
-<h2>New post for <%= @user.username %> blog</h2>
+<h2>
+	<% if @old_post %>
+		Edit post
+	<% else %>
+		New post
+	<% end %>
+</h2>
+<h3>for <%= @user.username %> blog</h3>
 
-<form method="post" action="/blog/<%= @user.username %>/publish_post">
-	<input type="text" name="title" class="post_title"/><br />
-	<textarea name="content" class="post_content" /></textarea><br />
+<form method="post" action="/blog/<%= @user.username %>/publish_post<%= '/' + @old_post.id.to_s if @old_post %>">
+	<input type="text" name="title" class="post_title" value="<%= @old_post.title if @old_post %>" /><br />
+	<textarea name="content" class="post_content" /><%= @old_post.content if @old_post %></textarea><br />
 	<button type="submit">Post</button>
 </form>

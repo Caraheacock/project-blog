@@ -68,6 +68,22 @@ class Blog < Sinatra::Base
     redirect to("/blog/#{params[:username]}")
   end
   
-  get "/blog/:username/edit_post" do
+  get "/blog/:username/edit_post/:post_id" do
+    @user = User.find_by_username(params[:username])
+    @old_post = Post.find(params[:post_id])
+    
+    erb :post
+  end
+  
+  post "/blog/:username/publish_post/:post_id" do
+    @user = User.find_by_username(params[:username])
+    old_post = Post.find(params[:post_id])
+    
+    old_post.update_attributes({
+      :title => params[:title],
+      :content => params[:content]
+    })
+    
+    redirect to("/blog/#{params[:username]}")
   end
 end

@@ -8,7 +8,7 @@
 	<% @user.posts.reverse.each do |post| %>
 		<hr />
 		<h2><%= post.title %></h2>
-		<p><a href="#">Edit this post</a> <a href="#">Delete this post</a></p>
+		<p><a href="/blog/<%= params[:username] = @user.username %>/edit_post/<%= params[:post_id] = post.id %>">Edit this post</a> <a href="#">Delete this post</a></p>
 		<p><%= post.created_at %></p>
 		<% paragraphs = post.make_paragraphs(post.content) %>
 		<% paragraphs.each do |p| %>
