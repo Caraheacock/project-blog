@@ -12,7 +12,7 @@
 		<p>No comments yet</p>
 	<% else %>
 		<% @post.comments.each do |comment| %>
-			<div class="single_comment">
+			<div class="single_comment" id="comment<%= comment.id %>">
 				<p><strong><%= comment.commenter %></strong></p>
 				<h5><%= comment.pretty_time %></h5>
 				<% comment.content_paragraphs.each do |p| %>
