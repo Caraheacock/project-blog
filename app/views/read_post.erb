@@ -18,10 +18,14 @@
 				<% comment.content_paragraphs.each do |p| %>
 					<p><%= p %></p>
 				<% end %>
-				<a href="#" class="little_button_light">Edit this comment</a> <a href="#" class="little_button_light">Delete this comment</a>
+				<a href="/blog/<%= @user.username %>/<%= @post.id %>/edit_comment/<%= comment.id %>" class="little_button_light">Edit this comment</a>
+				<a href="/blog/<%= @user.username %>/<%= @post.id %>/<%= comment.id %>/delete_confirm" class="little_button_light">Delete this comment</a>
 			</div>
 		<% end %>
 	<% end %>
 </div>
 
-<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment" class="little_button">Leave a comment</a> <a href="/blog/<%= @user.username %>" class="little_button">Back to <%= @user.username %> Blog</a></p>
+<p>
+	<a href="/blog/<%= @user.username %>/<%= @post.id %>/comment" class="little_button">Leave a comment</a>
+	<a href="/blog/<%= @user.username %>" class="little_button">Back to <%= @user.username %> Blog</a>
+</p>

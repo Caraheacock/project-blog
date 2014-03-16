@@ -1,18 +1,30 @@
-<h2>Are you sure you want to delete this post?</h2>
+<h2>Are you sure you want to delete this?</h2>
 
 <p>You can never get it back because it is for real getting deleted out of the database.</p>
 
-<h3><%= @old_post.title %></h3>
-
-<p><%= @old_post.created_at %></p>
-<% paragraphs = @old_post.make_paragraphs(@old_post.content) %>
-<% paragraphs.each do |p| %>
-	<p><%= p %></p>
+<% if @old_post %>
+	<h3><%= @old_post.title %></h3>
+	<h5><%= @old_post.pretty_time %></h5>
+	<% @old_post.content_paragraphs.each do |p| %>
+		<p><%= p %></p>
+	<% end %>
+<% elsif @old_comment %>
+	<h3><%= @old_comment.commenter %></h3>
+	<h5><%= @old_comment.pretty_time %></h5>
+	<% @old_comment.content_paragraphs.each do |p| %>
+		<p><%= p %></p>
+	<% end %>
 <% end %>
 
-<form method="post" action="/blog/<%= @user.username %>/delete_post/<%= @old_post.id %>">
-	<button type="submit">Yes, delete forever</button>
+<% if @old_post %>
+	<form method="post" action="/blog/<%= @user.username %>/delete_post/<%= @old_post.id %>">
+<% elsif @old_comment %>
+	<form method="post" action="/blog/<%= @user.username %>/<%= @old_comment.post.id %>/<%= @old_comment.id %>/delete_comment">
+<% end %>
+	<button type="submit" class="big_button">Yes, delete forever</button>
 </form>
-<form method="get" action="/blog/<%= @user.username %>">
-	<button type="submit">Nooo, I've made a horrible mistake, I'm sorry ):</button>
+
+
+<form method="get" action="/blog/<%= @user.username %><%= "/" + @old_comment.post.id.to_s if @old_comment %>">
+	<button type="submit" class="big_button">Nevermind ):</button>
 </form>

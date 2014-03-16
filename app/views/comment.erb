@@ -1,7 +1,11 @@
-<h2>Leave a comment</h2>
+<% if @old_comment %>
+	<h2>Edit comment</h2>
+<% else %>
+	<h2>Leave a comment</h2>
+<% end %>
 <h3>for <%= @user.username %> post: "<%= @post.title %>"</h3>
 
-<form method="post" action="/blog/<%= @user.username %>/<%= @post.id %>/publish_comment">
+<form method="post" action="/blog/<%= @user.username %>/<%= @post.id %>/publish_comment<%= "/" + @old_comment.id.to_s if @old_comment %>">
 	<p>
 		Name:<br />
 		<input type="text" name="commenter" value="<%= @old_comment.commenter if @old_comment %>" />

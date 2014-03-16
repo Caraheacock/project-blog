@@ -149,4 +149,50 @@ class Blog < Sinatra::Base
     
     redirect to("/blog/#{params[:username]}/#{params[:post_id]}#comments")
   end
+  
+  #######################
+  # Edit comment routes #
+  #######################
+  
+  get "/blog/:username/:post_id/edit_comment/:comment_id" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    @old_comment = Comment.find(params[:comment_id])
+    
+    erb :comment
+  end
+  
+  post "/blog/:username/:post_id/publish_comment/:comment_id" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    old_comment = Comment.find(params[:comment_id])
+    
+    old_comment.update_attributes({
+      :commenter => params[:commenter],
+      :content => params[:content]
+    })
+    
+    redirect to("/blog/#{params[:username]}/#{params[:post_id]}#comments")
+  end
+  
+  #########################
+  # Delete comment routes #
+  #########################
+  
+  get "/blog/:username/:post_id/:comment_id/delete_confirm" do
+    @user = User.find_by_username(params[:username])
+    @old_comment = Comment.find(params[:comment_id])
+    
+    erb :delete
+  end
+  
+  post "/blog/:username/:post_id/:comment_id/delete_comment" do
+    @user = User.find_by_username(params[:username])
+    @post = Post.find(params[:post_id])
+    old_comment = Comment.find(params[:comment_id])
+    
+    Comment.delete(old_comment.id)
+    
+    redirect to("/blog/#{params[:username]}/#{params[:post_id]}#comments")
+  end
 end
