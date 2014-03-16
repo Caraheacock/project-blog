@@ -1,5 +1,5 @@
 <h3><%= @post.title %></h3>
-<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>">Delete this post</a></p>
+<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>" class="little_button">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>" class="little_button">Delete this post</a></p>
 <p><%= @post.created_at %></p>
 <% paragraphs = @post.make_paragraphs(@post.content) %>
 <% paragraphs.each do |p| %>
@@ -22,6 +22,4 @@
 	<% end %>
 </div>
 
-<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment">Leave a comment</a></p>
-
-<p><a href="/blog/<%= @user.username %>">Back to <%= @user.username %> Blog</a></p>
+<p><a href="/blog/<%= @user.username %>/<%= @post.id %>/comment" class="little_button">Leave a comment</a> <a href="/blog/<%= @user.username %>" class="little_button">Back to <%= @user.username %> Blog</a></p>

@@ -8,12 +8,12 @@
 	<% @user.posts.reverse.each do |post| %>
 		<hr />
 		<h3><a href="/blog/<%= @user.username %>/<%= post.id %>"><%= post.title %></h3>
-		<p><a href="/blog/<%= @user.username %>/edit_post/<%= post.id %>" class="little_button">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= post.id %>" class="little_button">Delete this post</a></p>
+		<p><a href="/blog/<%= @user.username %>/edit_post/<%= post.id %>" class="little_button_light">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= post.id %>" class="little_button_light">Delete this post</a></p>
 		<p><%= post.created_at %></p>
 		<% paragraphs = post.make_paragraphs(post.content) %>
 		<% paragraphs.each do |p| %>
 			<p><%= p %></p>
 		<% end %>
-		<p><a href="/blog/<%= @user.username %>/<%= post.id %>#comments"><%= post.comments.count %> comment<%= "s" if post.comments.count != 1 %></a></p>
+		<p><a href="/blog/<%= @user.username %>/<%= post.id %>#comments" class="little_button"><%= post.comments.count %> comment<%= "s" if post.comments.count != 1 %></a></p>
 	<% end %>
 <% end %>

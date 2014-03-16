@@ -44,30 +44,38 @@
 		color: #DB9E1A;
 	}
 	
-	.big_button, .little_button {
+	.big_button, .little_button, .little_button_light {
 		font-family: "Courier New", Courier, monospace;
-		padding: 10px;
 		color: white;
 		border-radius: 10px;
-		background-color: #1B226E;
 		text-align: center;
 		text-transform: uppercase;
+	}
+	
+	.big_button:active, .big_button:hover, .big_button:focus, .little_button:active, .little_button:hover, .little_button:focus, .little_button_light:active, .little_button_light:hover, .little_button_light:focus {
+		background-color: #DB9E1A;
+		color: #fff;
+	}
+	
+	.big_button, .little_button {
+		background-color: #1B226E;
 	}
 	
 	.big_button {
 		font-size: 1.5em;
 		border: dashed 3px #fff;
 		letter-spacing: 3px;
+		padding: 10px;
 	}
 	
-	.big_button:active, .big_button:hover, .big_button:focus, .little_button:active, .little_button:hover, .little_button:focus {
-		background-color: #DB9E1A;
-		color: #fff;
-	}
-	
-	.little_button {
+	.little_button, .little_button_light {
 		font-size: 1em;
 		margin-right: 10px;
+		padding: 7px;
+	}
+	
+	.little_button_light {
+		background-color: #A1A5D4;
 	}
 	
 	/* Big sections */
@@ -133,7 +141,7 @@
 		padding: 5px;
 	}
 	
-	/* Post Stuff */
+	/* New/Edit Post Form Stuff */
 	.post_title {
 		width: 50%;
 	}
@@ -150,7 +158,10 @@
 	}
 	
 	.single_comment {
-		
+		background-color: rgba(255,255,255,0.5);
+		border-radius: 25px;
+		padding: 10px 20px;
+		margin: 20px 0;
 	}
 	
 	/* Miscellaneous */
