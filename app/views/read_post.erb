@@ -1,8 +1,7 @@
 <h3><%= @post.title %></h3>
-<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>" class="little_button">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>" class="little_button">Delete this post</a></p>
-<p><%= @post.created_at %></p>
-<% paragraphs = @post.make_paragraphs(@post.content) %>
-<% paragraphs.each do |p| %>
+<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>" class="little_button_light">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>" class="little_button_light">Delete this post</a></p>
+<p><%= @post.pretty_time %></p>
+<% @post.content_paragraphs.each do |p| %>
 	<p><%= p %></p>
 <% end %>
 
@@ -15,8 +14,11 @@
 		<% @post.comments.each do |comment| %>
 			<div class="single_comment">
 				<p><strong><%= comment.commenter %></strong></p>
-				<p><%= comment.created_at %></p>
-				<p><%= comment.content %></p>
+				<h5><%= comment.pretty_time %></h5>
+				<% comment.content_paragraphs.each do |p| %>
+					<p><%= p %></p>
+				<% end %>
+				<a href="#" class="little_button_light">Edit this comment</a> <a href="#" class="little_button_light">Delete this comment</a>
 			</div>
 		<% end %>
 	<% end %>

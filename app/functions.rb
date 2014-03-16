@@ -43,8 +43,16 @@ module TextFormat
   # Takes the post content and creates an array of paragraphs.
   #
   # Returns an array where each paragraph is an item in the array.
-  def make_paragraphs(text)
-    paragraphs = text.split(/\r\n/)
+  def content_paragraphs
+    content.split(/\r\n/)
+  end
+  
+  # Takes a Time object and reformats it.
+  #
+  # Outputs the full day followed by the full month, day, and year, and the 12 hour clock time with AM/PM.
+  # e.g. "Thursday, March 13, 2014, at 11:48 PM"
+  def pretty_time
+    created_at.getlocal.strftime("%A, %B %-d, %Y, at %l:%M %p")
   end
 end
 
