@@ -1,9 +1,10 @@
 <h3><%= @post.title %></h3>
-<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>" class="little_button_light">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>" class="little_button_light">Delete this post</a></p>
-<p><%= @post.pretty_time %></p>
+<h4>by <%= @user.username %></h4>
+<h5><%= @post.pretty_time %></h5>
 <% @post.content_paragraphs.each do |p| %>
 	<p><%= p %></p>
 <% end %>
+<p><a href="/blog/<%= @user.username %>/edit_post/<%= @post.id %>" class="little_button_light">Edit this post</a> <a href="/blog/<%= @user.username %>/delete_confirm/<%= @post.id %>" class="little_button_light">Delete this post</a></p>
 
 <hr />
 

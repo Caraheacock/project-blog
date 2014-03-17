@@ -3,17 +3,21 @@
 <p>You can never get it back because it is for real getting deleted out of the database.</p>
 
 <% if @old_post %>
-	<h3><%= @old_post.title %></h3>
-	<h5><%= @old_post.pretty_time %></h5>
-	<% @old_post.content_paragraphs.each do |p| %>
-		<p><%= p %></p>
-	<% end %>
+	<div class="single_post">
+		<h3><%= @old_post.title %></h3>
+		<h5><%= @old_post.pretty_time %></h5>
+		<% @old_post.content_paragraphs.each do |p| %>
+			<p><%= p %></p>
+		<% end %>
+	</div>
 <% elsif @old_comment %>
-	<h3><%= @old_comment.commenter %></h3>
-	<h5><%= @old_comment.pretty_time %></h5>
-	<% @old_comment.content_paragraphs.each do |p| %>
-		<p><%= p %></p>
-	<% end %>
+	<div class="single_comment">
+		<h3><%= @old_comment.commenter %></h3>
+		<h5><%= @old_comment.pretty_time %></h5>
+		<% @old_comment.content_paragraphs.each do |p| %>
+			<p><%= p %></p>
+		<% end %>
+	</div>
 <% end %>
 
 <% if @old_post %>
